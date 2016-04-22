@@ -1793,8 +1793,12 @@ class Magmi_ProductImportEngine extends Magmi_Engine
         $res = array("ok"=>0,"last"=>0);
         $canceled = false;
         $this->_current_row++;
-        if ($this->_current_row % $rstep == 0) {
-            $this->reportStats($this->_current_row, $tstart, $tdiff, $lastdbtime, $lastrec);
+
+        # LYBE: Björn [ciel() converts $rstep to 0 when devided by empty string ~L1888. This might save us from failing product imports, but we dont know the reason why STRING is used or wht string is empty...] 
+        if ($rstep != 0) {
+            if (($this->_current_row % $rstep) == 0) {
+                $this->reportStats($this->_current_row, $tstart, $tdiff, $lastdbtime, $lastrec);
+            }
         }
         try {
             if (is_array($item) && count($item) > 0) {
