@@ -1,4 +1,10 @@
 <?php
+/**
+ * # LYBE: Björn [Authentication PHP Script]  
+ *
+ * @author Björn Christensson
+ */
+
 header('Pragma: public'); // required
 header('Expires: -1'); // no cache
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');

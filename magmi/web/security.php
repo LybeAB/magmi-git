@@ -36,6 +36,12 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
     }
 }
 
+/**
+ * # LYBE: Björn [Replace Basic Authentication with PHP Script]  
+ * @see magmi.php
+ * @author Björn Christensson
+ */
+
 /*if (!isset($_SERVER['PHP_AUTH_USER'])) {
     header('WWW-Authenticate:Basic realm="Magmi"');
     header('HTTP/1.0 401 Unauthorized');
