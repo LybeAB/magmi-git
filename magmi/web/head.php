@@ -7,7 +7,7 @@ ini_set("display_errors", 1);
 ini_set("error_reporting", E_ALL);
 ini_set("magic_quotes_gpc", 0);
 require_once("magmi_version.php");
-session_start();
+@session_start();
 ?>
 <html>
 <head>
