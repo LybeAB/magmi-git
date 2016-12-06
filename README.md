@@ -37,3 +37,22 @@ Add these lines to an .htaccess file:
      RewriteEngine On
      RewriteCond %{HTTP:Authorization} ^(.+)$
      RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+     
+     
+## Lybe patch for Magento 1.9.3
+http://magehelperblog.com/magmi-multiselect-issue-magento-1-9-3/
+
+     $attid = $attrdesc["attribute_id"];		
+         // --- ExtensionsMall multiselect 1.9.3 varchar -> text ----		
+        if ($attrdesc["frontend_input"] == "multiselect") {		
+            // if empty delete entry		
+            if ($ivalue == "") {		
+                return "__MAGMI_DELETE__";		
+            }		
+            // magento uses "," as separator for different multiselect values		
+            $sep = Magmi_Config::getInstance()->get("GLOBAL", "multiselect_sep", ",");		
+            $multiselectvalues = explode($sep, $ivalue);		
+            $oids = $this->getOptionIds($attid, $storeid, $multiselectvalues);		
+            $ovalue = implode(",", array_values($oids));		
+            unset($oids);		
+        }
